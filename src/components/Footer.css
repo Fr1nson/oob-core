@@ -1,27 +1,61 @@
 .footer {
-    background-color: rgba(236, 122, 7, 0.952); /* Полупрозрачный фон */
-    backdrop-filter: blur(10px); /* Эффект размытия */
-    padding: 15px 30px;
-    font-size: 0.9rem;
+  padding: 5px 20px; /* Уменьшаем вертикальные отступы */
+  color: #f0f0f0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: rgb(255, 148, 0);
+  position: relative; /* Для возможности дальнейшего изменения расположения */
+  bottom: 0; /* Закрепим футер внизу, если нужно */
 }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .footer-nav a {
-    margin-left: 20px;
-    color: white;
-    text-decoration: none;
-  }
-  
-  .footer-nav a:hover {
-    text-decoration: underline;
-  }
 
-  .learn-more {
-    margin-right: 900px; /* Сдвигает "Learn More" вправо */
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer a {
+  text-decoration: none; /* Убираем подчеркивание для всех ссылок в футере */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px); /* Насколько вниз прыгает */
+  }
+}
+
+.down-img {
+  width: 30px;
+  height: 30px;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+.down-img:hover {
+  transform: translateY(5px);
+}
+
+.learn-more {
+  font-weight: bold;
+  text-decoration: none; /* Убираем подчеркивание для конкретной ссылки */
+  color: #ffffff;
+  font-size: 20px;
+  transition: color 0.3s ease, box-shadow 0.3s ease; /* Добавляем плавный переход для тени */
+}
+
+.learn-more:hover {
+  color: #00aaff;
+}
+
+.footer:hover .learn-more {
+  color: #000000; /* Изменяем цвет текста на оранжевый при наведении на футер */
+  
 }

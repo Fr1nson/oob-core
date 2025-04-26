@@ -4,16 +4,19 @@ import './Footer.css';
 function Footer() {
   return (
     <footer className="footer">
+      <a href="#">
       <div className="footer-content">
-        <span>© 2025 OOB. All rights reserved.</span>
-        <nav className="footer-nav">          
-        <a href="#learnmore" class="learn-more">⬇⬇Learn More⬇⬇</a>
-          <a href="#privacy">Privacy</a>
-          <a href="#terms">Terms</a>
-          <a href="#contact">Contact</a>
+        <nav className="footer-nav">
+        <a href="#down"><img src="/down.png" alt="Arrow" className="down-img" /></a>
+          <a href="#down"><img src="/down.png" alt="Arrow" className="down-img" /></a>
 
+          <a href="#learnmore" className="learn-more">Learn More</a>
+
+          <a href="#down"><img src="/down.png" alt="Arrow" className="down-img" /></a>
+
+          <a href="#down"><img src="/down.png" alt="Arrow" className="down-img" /></a>
         </nav>
-      </div>
+      </div></a>
     </footer>
   );
 }

@@ -1,47 +1,44 @@
 .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    font-family: sans-serif;
-  }
-  
-  .background-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  .overlay {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .center-content .circle {
-    width: 250px;
-    height: 250px;
-    margin: 0 auto 20px auto;
-    background-image: url(/public/center.png);
-  }
-  
-  .center-content h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .center-content p {
-    font-size: 1.25rem;
-  }
-  
+  position: relative;
+  height: 95.3vh;
+  width: 100%;
+  overflow: hidden; /* Отключаем прокрутку */
+  font-family: sans-serif;
+}
 
-  
+.background-video {
+  position: fixed; /* Фиксируем видео */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Видео заполняет экран, не искажая пропорции */
+  z-index: -1; /* Отправляем видео на задний план */
+}
+
+.overlay {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center-content .circle {
+  width: 250px;
+  height: 250px;
+  margin: 0 auto 20px auto;
+  background-image: url(/public/center.png);
+}
+
+.center-content h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.center-content p {
+  font-size: 1.25rem;
+}
