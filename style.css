@@ -1,5 +1,3 @@
-внеси нужные изменения не трогая лишнего 
-
 /* Reset */
 * {
   margin: 0;
@@ -56,6 +54,19 @@ body {
   overflow: hidden;
 }
 
+/* затемняющий слой над видео */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.20); /* лёгкое затемнение по умолчанию */
+  transition: background 0.6s ease;
+  z-index: 0; /* ниже текста и слайдера, выше видео */
+}
+.hero.dim::after {
+  background: rgba(0,0,0,0.55); /* усиливаем затемнение при показе слайдера */
+}
+
 .hero-video {
   position: absolute;
   top: 0;
@@ -71,6 +82,16 @@ body {
   color: #fff;
   position: relative;
   z-index: 1;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* плавное исчезновение заголовка */
+.hero .overlay.overlay--fade {
+  opacity: 0;
+  transform: translateY(-40px);
+  pointer-events: none;
 }
 
 .learn-more {
@@ -82,6 +103,7 @@ body {
   cursor: pointer;
   opacity: 0;
   animation: blink 1s infinite;
+  z-index: 1; /* над затемнением */
 }
 @keyframes blink {
   50% { transform: translateY(5px); }
@@ -91,29 +113,51 @@ body {
   transition: opacity 1s;
 }
 
-/* Projects */
+/* Projects — базовые стили секции (как было) */
 .projects {
-  min-height: 100vh;
-  padding: 60px 0;
-  background: #000; /* фон чёрный под стиль */
   position: relative;
-  color: #fff;
-  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* чтобы слайды не вываливались */
 }
 
-/* Скрытая секция */
+/* универсальный скрывающий класс для блоков */
 .hidden {
   display: none;
 }
 
+/* ===== РЕЖИМ "ПОВЕРХ ВИДЕО" (выезд снизу в самом hero) ===== */
+.projects.on-hero {
+  position: fixed;        /* перекрываем вьюпорт поверх видео */
+  inset: 0;               /* растягиваем на весь экран */
+  z-index: 9;             /* ниже фиксированного header (10), но выше затемнения (0) */
+  background: rgba(0,0,0,0.7); /* затемняем для читаемости */
+  padding: 100px 0 60px;  /* отступ сверху из-за шапки */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(20%);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.projects.on-hero.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 /* Карточка проекта */
 .project-card {
-  max-width: 1000px;
+  max-width: 1200px;
+  width: 90%;
+  height: 80vh;
   margin: 0 auto;
   background: rgba(0,0,0,0.6);
   border: 1px solid #555;
   box-shadow: 0 0 12px rgba(0,0,0,0.8);
   overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Заголовок Projects */
@@ -181,12 +225,14 @@ body {
 .project-content {
   position: relative;
   overflow: hidden;
+  flex: 1;
 }
 
 .project-content img {
   width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
-  object-fit: cover;
 }
 
 .project-desc {
@@ -202,38 +248,40 @@ body {
 }
 
 /* Кнопка Back to Top */
-.back-to-top {
+#backToTop {
   position: absolute;
-  top: 20px;
+  bottom: 20px;
   right: 20px;
-  padding: 6px 14px;
-  font-size: 14px;
-  background: rgba(0,0,0,0.6);
-  border: 1px solid #777;
-  color: #fff;
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  z-index: 20;
 }
-.back-to-top:hover {
-  background: rgba(255,255,255,0.2);
+
+#backToTop:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
 }
 
 .project-slide {
-  display: none;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.6s ease;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  display: none; /* скрыт по умолчанию */
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 .project-slide.active {
   display: block;
-  opacity: 1;
   transform: translateX(0);
-  position: relative;
+  opacity: 1;
 }
 
 /* Анимация для направления */
@@ -246,14 +294,6 @@ body {
   transform: translateX(100%);
   opacity: 0;
 }
-
-.project-content {
-  position: relative;
-  overflow: hidden;
-  min-height: 400px; /* фиксированная высота для стабильности */
-}
-
-
 
 /* Footer */
 footer {
@@ -293,3 +333,15 @@ footer {
   margin: 0 10px;
   text-decoration: none;
 }
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* стартовые позиции для входящего слайда */
+.project-slide.from-right { transform: translateX(100%); opacity: 0; }
+.project-slide.from-left  { transform: translateX(-100%); opacity: 0; }
+
+/* кнопка снизу справа; перекрывает правило с top */
+#backToTop { position: absolute; bottom: 20px; right: 20px; top: auto; }
