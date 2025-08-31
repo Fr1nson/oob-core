@@ -1,111 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BABAYka</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BABAYka</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
 <body>
+<!-- Header -->
+    <header class="header">
+      <div class="logo">LOGO</div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#">Devs</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">LOGO</div>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#">Devs</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-<section class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="backgr.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="overlay">
-    <h1>Some text</h1>
-    <p>Some text some text</p>
-  </div>
-  <div class="learn-more" id="learnMore">▼ Learn More ▼</div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="projects hidden">
-  <button id="backToTop" class="back-to-top">↑ Back to Top</button>
-  
-  <div class="project-card">
-    <div class="project-header">
-      <h2>Projects</h2>
-      <div class="project-nav">
-        <!-- Кнопка назад -->
-        <button id="prevProject" class="arrows arrows-left">
-          <span class="arrow">‹</span>
-          <span class="arrow">‹</span>
-          <span class="arrow">‹</span>
-        </button>
-        <!-- Кнопка вперёд -->
-        <button id="nextProject" class="arrows arrows-right">
-          <span class="arrow">›</span>
-          <span class="arrow">›</span>
-          <span class="arrow">›</span>
-        </button>
+    <!-- Hero Section - ФИКСИРОВАННОЕ -->
+    <section class="hero">
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="backgr.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay">
+        <h1>Some text</h1>
+        <p>Some text some text</p>
       </div>
-    </div>
-    
-    <div class="project-content">
-      <!-- Слайд 1 -->
-      <div class="project-slide active">
-        <img src="image.png" alt="Project Image">
-        <div class="project-desc">
-          <p>
-            Great! I'll generate DALL-E images for futuristic game world screenshot,
-            detailed game weapon render, high-tech laboratory environment,
-            battle scene with advanced technology developer team group.
-          </p>
+      <div class="learn-more" id="learnMore">▼ Learn More ▼</div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects hidden">
+      <button id="backToTop" class="back-to-top">↑ Back to Top</button>
+
+      <div class="project-card">
+        <div class="project-header">
+          <h2>Projects</h2>
+          <div class="project-nav">
+            <button id="prevProject" class="arrows arrows-left">
+              <span class="arrow">‹</span>
+              <span class="arrow">‹</span>
+              <span class="arrow">‹</span>
+            </button>
+            <button id="nextProject" class="arrows arrows-right">
+              <span class="arrow">›</span>
+              <span class="arrow">›</span>
+              <span class="arrow">›</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <div class="project-slide active">
+            <img src="image.png" alt="Project Image" />
+            <div class="project-desc">
+              <p>
+                Great! I'll generate DALL-E images for futuristic game world
+                screenshot, detailed game weapon render, high-tech laboratory
+                environment, battle scene with advanced technology developer
+                team group.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-slide">
+            <img src="Background.png" alt="OUT-OF-BOUNDS" />
+            <div class="project-desc">
+              <p>
+                <strong>OUT-OF-BOUNDS</strong> — экспериментальный проект с
+                элементами исследования мира, динамическими боями и уникальной
+                атмосферой «за пределами возможного».
+              </p>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Слайд 2 -->
-      <div class="project-slide">
-        <img src="Background.png" alt="OUT-OF-BOUNDS">
-        <div class="project-desc">
-          <p>
-            <strong>OUT-OF-BOUNDS</strong> — экспериментальный проект с элементами
-            исследования мира, динамическими боями и уникальной атмосферой
-            «за пределами возможного».
-          </p>
+    <!-- Footer - ФИКСИРОВАН ВНИЗУ -->
+    <footer id="footer">
+      <div class="newsletter">
+        <img src="follow.png" alt="Newsletter image" />
+        <div>
+          <h2>Follow our news</h2>
+          <form>
+            <input type="email" placeholder="Enter your email" />
+            <button type="submit">Subscribe</button>
+          </form>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-  <!-- Footer -->
-  <footer>
-    <div class="newsletter">
-      <img src="follow.png" alt="Newsletter image">
-      <div>
-        <h2>Follow our news</h2>
-        <form>
-          <input type="email" placeholder="Enter your email">
-          <button type="submit">Subscribe</button>
-        </form>
+      <div class="footer-bottom">
+        <p>© 2025 Game Studio. All Rights Reserved.</p>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
       </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Game Studio. All Rights Reserved.</p>
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
