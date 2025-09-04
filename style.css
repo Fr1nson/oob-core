@@ -426,7 +426,7 @@
         height: 100vh;
       }
 
-      /* Адаптивность */
+      /* Адаптивность под мобильные устройства */
       @media (max-width: 768px) {
         .newsletter {
           flex-direction: column;
